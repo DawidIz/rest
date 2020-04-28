@@ -14,7 +14,17 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.10",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "package.json": "^2.0.1"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DawidIz/rest.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DawidIz/rest/issues"
+  },
+  "homepage": "https://github.com/DawidIz/rest#readme"
 }
