@@ -1,5 +1,9 @@
 import User from '../models/user.js'
 
+// export default {
+//     updateUser = async () => {},
+// }
+
 export const addUser = async data => {
     try {
         await new User(data).save()
