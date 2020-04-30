@@ -1,19 +1,19 @@
 import express from 'express'
-import { addUser } from '../db/controllers/user.js'
+import userController from '../controllers/user.js'
 
 const router = express.Router()
 
 // app.get('/add/:name', async (req, res) => {
 //     const { name } = req.params
-//     await addUser({ name })
-//     await showUsers()
+//     await userController.add({ name })
+//     await userController.show()
 //     res.redirect('/')
 // })
 
 // app.get('/remove/:name', async (req, res) => {
 //     const { name } = req.params
-//     await removeUser({ name })
-//     await showUsers()
+//     await userController.remove({ name })
+//     await userController.show()
 //     res.redirect('/')
 // })
 
@@ -23,20 +23,29 @@ const router = express.Router()
 // UPDATE : PUT /users/:id/data ? // how pass throw data like object
 // DELETE : DELETE /users/:id
 
-router.get('/', (req, res) => {
-    console.log('user')
-
-    res.send('route : user')
-})
-
-router.get('/add/:name', (req, res) => {
-    console.log('add user')
-    const { name } = req.params
-    addUser({
-        name,
-        date: new Date().toString(),
+router
+    .route('/')
+    .post((req, res) => {
+        res.send('created user')
     })
-    res.redirect('/')
-})
+    .get((req, res) => {
+        res.send('USERS')
+    })
+
+router
+    .route('/:id')
+    .get((req, res) => {
+        const { id } = req.params
+        res.send(`user id: ${id}`)
+    })
+    .put((req, res) => {
+        const { id } = req.params
+        const { value } = req.query
+        res.send(`update user id: ${id} data = ${value}`)
+    })
+    .delete((req, res) => {
+        const { id } = req.params
+        res.send(`deleted user id: ${id}`)
+    })
 
 export default router
